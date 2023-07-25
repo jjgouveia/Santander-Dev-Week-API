@@ -15,13 +15,12 @@ public class Account {
   private String number;
   private String agency;
 
-  @Column(precision = 2, scale = 13)
+  @Column(precision =13, scale = 2)
   private BigDecimal balance;
 
-  @Column(name = "credit_limit", precision = 2, scale = 13)
+  @Column(name = "credit_limit", precision = 13, scale = 2)
   /*
-  * precision: quantidade de dígitos
-  * scale: quantidade de casas decimais
+  *
   * */
 
 
