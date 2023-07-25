@@ -1,15 +1,28 @@
 package com.bankapi.Santander.Dev.Week.domain.model;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity(name = "tb_account")
 public class Account {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(unique = true)
   private String number;
   private String agency;
 
+  @Column(precision = 2, scale = 13)
   private BigDecimal balance;
 
+  @Column(precision = 2, scale = 13)
+  /*
+  * precision: quantidade de dígitos
+  * scale: quantidade de casas decimais
+  * */
   private BigDecimal limit;
 
   public Long getId() {
