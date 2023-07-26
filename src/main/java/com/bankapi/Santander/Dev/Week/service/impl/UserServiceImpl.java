@@ -7,13 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 
-@Service // This annotation is used to mark the class as a service provider.
+@Service
 public class UserServiceImpl implements UserService {
 
-  private final UserRepository userRepository; // This is a dependency injection.
+  private final UserRepository userRepository;
 
   public UserServiceImpl(UserRepository userRepository) {
-    // This is a constructor injection.
     this.userRepository = userRepository;
   }
 
@@ -23,10 +22,10 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User create(User user) {
-    if(userRepository.existsByAccountNumber(user.getAccount().getNumber()))
-      throw new IllegalArgumentException("Essa conta já existe");
-
-    return userRepository.save(user);
+  public User create(User userToCreate) {
+    if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())) {
+      throw new IllegalArgumentException("This Account number already exists.");
+    }
+    return userRepository.save(userToCreate);
   }
 }
